@@ -17,3 +17,13 @@ export const Field = styled.input`
   width: 200px;
   height: 20px;
 `
+
+export const ButtonUI = styled.button`
+  background: #44719f;
+  color: #fff;
+  border: 1px solid #44719f;
+  border-radius: 2px;
+  font-size: 14px;
+  width: 80px;
+  height: 25px;
+`
