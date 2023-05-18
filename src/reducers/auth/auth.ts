@@ -2,12 +2,6 @@ import { RootState } from '../../store';
 import { Auth, RequestLogin } from './types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export const TypesAuth = {
-  LOGIN_REQUEST: 'LOGIN_REQUEST',
-  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGIN_ERROR: 'LOGIN_ERROR',
-};
-
 interface OwnAuth {
   auth: Auth | null
   isError: boolean
@@ -36,6 +30,11 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isError = true;
     },
+    logout: (state) => {
+      state.auth = null
+      state.isLoading = false;
+      state.isError = false;
+    },
   },
 });
 
@@ -43,6 +42,6 @@ export const authData = (state: RootState) => state.auth.auth;
 export const isLoading = (state: RootState) => state.auth.isLoading;
 export const isError = (state: RootState) => state.auth.isError;
 
-export const { loginFetched, errorFetchingLogin, fetchLogin } = authSlice.actions;
+export const { loginFetched, errorFetchingLogin, fetchLogin, logout } = authSlice.actions;
 
 export default authSlice.reducer;

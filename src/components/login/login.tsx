@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate()
   const isLoginLoading = useSelector(isLoading)
   const isLoginError = useSelector(isError)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const [fields, setFields] = useState({
     email: '',
     password: ''
@@ -22,10 +22,10 @@ const Login = () => {
   })
 
   const onValidate = (event: any) => {
-    event.preventDefault();
+    event.preventDefault()
 
     if (!errors.email && !errors.password) {
-      dispatch(fetchLogin({ email: fields.email, password: fields.password, navigate }));
+      dispatch(fetchLogin({ email: fields.email, password: fields.password, navigate }))
     }
   }
 

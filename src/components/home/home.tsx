@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { authData } from '../../reducers/auth/auth'
-import { useSelector } from 'react-redux'
+import { authData, logout } from '../../reducers/auth/auth'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { Welcome } from './styles'
+import { ButtonLogout, HomeContent, Welcome } from './styles'
 
 const Home = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const authLoginData = useSelector(authData)
 
   useEffect(() => {
@@ -15,7 +16,12 @@ const Home = () => {
   }, [authLoginData, navigate])
 
   return (
-    <Welcome>Bienvenido { authLoginData?.user.email }. Tu Token es: { authLoginData?.accessToken }</Welcome>
+    <HomeContent>
+      <Welcome>Bienvenido { authLoginData?.user.email }. Tu Token es: { authLoginData?.accessToken }</Welcome>
+      <div>
+        <ButtonLogout onClick={() => dispatch(logout())}>Cierra la sesión</ButtonLogout>
+      </div>
+    </HomeContent>
   )
 }
 
