@@ -26,4 +26,9 @@ export const ButtonUI = styled.button`
   font-size: 14px;
   width: 80px;
   height: 25px;
+  opacity: ${(props)=> props.disabled ? '0.5' : '1'}
+`
+
+export const ErrorContent = styled.div`
+  color: red;
 `
