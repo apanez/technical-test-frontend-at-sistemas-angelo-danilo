@@ -27,8 +27,16 @@ $ npm run start
 Genera una carpeta /build para producción. Los archivos que genera estan minimizados y optimizados. Ejecuta
 
 ```
-$ npm run build
+$ npm run test
 ```
+
+Corre los test unitarios
+
+```
+$ npm run test:coverage
+```
+
+Corre los test unitarios y te muestra la cobertura. Desde la carpeta generada coverage se puede abrir en el navegador la cobertura
 
 ## Probar
 
@@ -60,3 +68,6 @@ El archivo `./routes` gestiona las rutas de la aplicación.
 - axios
 
 ### Mejoras a futuro
+
+Se puede agregar un fichero .env para gestionar diferentes entornos
+Se puede agregar storybook para crear una interfaz de los componentes creados
