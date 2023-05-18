@@ -1,9 +1,9 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { screen } from '@testing-library/react'
+import App from './App'
+import renderWithWrapper from './test/wrapperTest'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders App component', () => {
+  renderWithWrapper(<App />)
+  const buttonLogin = screen.getByText('Ingresar')
+  expect(buttonLogin).toBeInTheDocument()
 });

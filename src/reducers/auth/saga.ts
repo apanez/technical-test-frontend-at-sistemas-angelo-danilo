@@ -4,12 +4,11 @@ import { Auth, Params } from './types'
 import { fetchLoginAPI } from '../../services/login'
 
 export function* handleLogin({ payload }: Params) {
-  const { email, password, navigate } = payload
+  const { email, password } = payload
 
   try {
     const auth: Auth = yield call(() => fetchLoginAPI(email, password) as any)
     yield put(loginFetched(auth))
-    navigate('/')
   } catch (err) {
     yield put(errorFetchingLogin())
   }

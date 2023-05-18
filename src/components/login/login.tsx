@@ -1,15 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ErrorField from "../errorField/errorField"
 import { useDispatch, useSelector } from 'react-redux'
 import { ErrorFields } from "./types"
-import { isLoading, fetchLogin, isError } from '../../reducers/auth/auth'
+import { isLoading, fetchLogin, isError, authData } from '../../reducers/auth/auth'
 import { ButtonUI, ErrorContent, Field, FieldContent, LabelUI, LoginContent } from "./styles"
 
 const Login = () => {
   const navigate = useNavigate()
   const isLoginLoading = useSelector(isLoading)
   const isLoginError = useSelector(isError)
+  const authLoginData = useSelector(authData)
   const dispatch = useDispatch()
   const [fields, setFields] = useState({
     email: '',
@@ -21,11 +22,17 @@ const Login = () => {
     password: false
   })
 
+  useEffect(() => {
+    if(authLoginData) {
+      navigate('/')
+    }
+  }, [authLoginData, navigate])
+
   const onValidate = (event: any) => {
     event.preventDefault()
 
     if (!errors.email && !errors.password) {
-      dispatch(fetchLogin({ email: fields.email, password: fields.password, navigate }))
+      dispatch(fetchLogin({ email: fields.email, password: fields.password }))
     }
   }
 
@@ -36,6 +43,7 @@ const Login = () => {
           <LabelUI>Usuario: </LabelUI>
           <Field
             type="text"
+            data-testid="email"
             name="email"
             onChange={(e) => {
               setFields(currentFields => ({ ...currentFields, email: e.target.value }))
@@ -48,6 +56,7 @@ const Login = () => {
           <LabelUI>Contraseña:</LabelUI>
           <Field
             type="password"
+            data-testid="password"
             name="password"
             onChange={(e) => {
               setFields(currentFields => ({ ...currentFields, password: e.target.value }))
@@ -56,8 +65,8 @@ const Login = () => {
           />
           {errors.password && <ErrorField />}
         </FieldContent>
-        {isLoginError && <ErrorContent>Error de autentificación</ErrorContent>}
-        <ButtonUI type="submit" disabled={isLoginLoading}>Ingresar</ButtonUI>
+        {isLoginError && <ErrorContent data-testid="error-message">Error de autentificación</ErrorContent>}
+        <ButtonUI data-testid="button-login" type="submit" disabled={isLoginLoading}>Ingresar</ButtonUI>
       </form>
     </LoginContent>
   )

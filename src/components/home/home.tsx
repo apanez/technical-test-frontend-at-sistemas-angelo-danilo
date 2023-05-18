@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <HomeContent>
-      <Welcome>Bienvenido { authLoginData?.user.email }. Tu Token es: { authLoginData?.accessToken }</Welcome>
+      <Welcome data-testid="welcome">Bienvenido { authLoginData?.user.email }. Tu Token es: { authLoginData?.accessToken }</Welcome>
       <div>
         <ButtonLogout onClick={() => dispatch(logout())}>Cierra la sesión</ButtonLogout>
       </div>
