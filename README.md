@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Proyecto de prueba
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El repositorio replica una sistema de inicio de sesión.
+Hay una página de inicio que te da la bienvenida con los datos de la sesión guardados en el store de la aplicación.
+En caso de no haber iniciado sesión te redirige a la página de login.
 
-## Available Scripts
+## Inicializa el proyecto
 
-In the project directory, you can run:
+Instala las dependencias antes de inicializar la app, ejecuta
 
-### `npm start`
+```
+$ npm install
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para que el servicio de login funcione correctamente ejecuta
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+$ npm run server
+```
 
-### `npm test`
+Para correr la aplicación ejecuta
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ npm run start
+```
 
-### `npm run build`
+Genera una carpeta /build para producción. Los archivos que genera estan minimizados y optimizados. Ejecuta
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Probar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para probar el login se pueden usar estos datos
 
-### `npm run eject`
+```
+$ Usuario: test@test.com
+$ Contraseña: test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+O se puede crear un nuevo usuario desde postman. Una vez que el proceso de json-server este corriendo, se puede usar el endpoint `http://localhost:3200/register` usando el método post y pasando un objeto json con el email y el password en el body.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Enfoque
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Se usa json-server y json-server-auth para crear un servicio login de prueba.
+En la carpeta services se crean todas las peticiones a los servicios.
+Tenemos una carpeta reducers para gestionar los diferentes stores que puede tener la aplicacion, estos se uniran en el `store/index.ts`.
+En la carpeta componentes tenemos todos los componentes necesarios.
+Se usa styled-components para dar forma a los componentes.
+El archivo `./routes` gestiona las rutas de la aplicación.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Librerias
 
-## Learn More
+- React
+- Typescript
+- Redux
+- Redux-saga
+- json-server y json-server-auth
+- axios
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Mejoras a futuro
