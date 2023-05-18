@@ -1,5 +1,5 @@
-import { RootState } from '../../store';
-import { Auth, RequestLogin } from './types'
+import { RootState } from '../store';
+import { Auth, RequestLogin } from './auth/types'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface OwnAuth {

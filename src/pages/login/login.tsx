@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import ErrorField from "../errorField/errorField"
+import ErrorField from '../../components/errorField/errorField'
 import { useDispatch, useSelector } from 'react-redux'
-import { ErrorFields } from "./types"
-import { isLoading, fetchLogin, isError, authData } from '../../reducers/auth/auth'
-import { ButtonUI, ErrorContent, Field, FieldContent, LabelUI, LoginContent } from "./styles"
+import { ErrorFields } from './types'
+import { isLoading, fetchLogin, isError, authData } from '../../reducers/auth'
+import { ButtonUI, ErrorContent, Field, FieldContent, LabelUI, LoginContent } from './styles'
 
 const Login = () => {
   const navigate = useNavigate()

@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import authReducer from '../reducers/auth/auth'
+import authReducer from '../reducers/auth'
 import createSagaMiddleware from "@redux-saga/core"
 import loginSaga from '../reducers/auth/saga'
 

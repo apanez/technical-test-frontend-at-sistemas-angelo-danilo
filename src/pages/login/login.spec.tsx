@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor } from '@testing-library/react'
 import renderWithWrapper from '../../test/wrapperTest'
 import Login from './login'
 import store from '../../store'
-import { fetchLogin } from '../../reducers/auth/auth'
+import { fetchLogin } from '../../reducers/auth'
 
 const mockedUsedNavigate = jest.fn();
 
